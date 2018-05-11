@@ -1,6 +1,11 @@
 import requests
 from requests.auth import HTTPBasicAuth
 
+'''
+please refer the following link for api specification
+http://api.freenas.org/resources/storage.html
+'''
+
 class FreeNas:
     def __init__(self, host, user, password):
         self.host = host
@@ -13,7 +18,7 @@ class FreeNas:
 
 
     def enable_service(self, service):
-        resource = '{}/services/services/{}/'.format(host, service)
+        resource = 'http://{}/services/services/{}/'.format(self.host, service)
         body = {
             'srv_enable': True
         }
